@@ -1,0 +1,403 @@
+/* ============================================
+   CAPE BUILDER - PIXLR INTEGRATION
+   ============================================ */
+
+.builder-section {
+    min-height: 100vh;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+}
+
+.builder-container {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.builder-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.builder-subtitle {
+    font-size: 1.2rem;
+    color: var(--teal);
+    text-shadow: 0 0 10px var(--teal-glow);
+    margin-top: 1rem;
+}
+
+/* Instructions Panel */
+.instructions-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.instruction-card {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.instruction-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--teal-glow), transparent);
+    transition: left 0.5s ease;
+}
+
+.instruction-card:hover::before {
+    left: 100%;
+}
+
+.instruction-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--teal);
+    box-shadow: 0 10px 40px var(--teal-glow);
+}
+
+.instruction-number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--gold);
+    text-shadow: 0 0 15px var(--gold-glow);
+    line-height: 1;
+    min-width: 60px;
+}
+
+.instruction-text h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    text-shadow: 0 0 10px var(--gold-glow);
+    margin-bottom: 0.5rem;
+}
+
+.instruction-text p {
+    color: var(--teal);
+    text-shadow: 0 0 5px rgba(0, 206, 209, 0.5);
+    line-height: 1.6;
+}
+
+/* Pixlr Container */
+.pixlr-container {
+    width: 100%;
+    height: 80vh;
+    min-height: 600px;
+    margin-bottom: 3rem;
+    background: #000000;
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(199, 21, 133, 0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(199, 21, 133, 0.2);
+    position: relative;
+}
+
+.pixlr-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.pixlr-embed-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.pixlr-fallback {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 10;
+}
+
+.fallback-content {
+    text-align: center;
+    padding: 3rem;
+}
+
+.fallback-content h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    text-shadow: 0 0 20px var(--gold-glow);
+    margin-bottom: 1rem;
+}
+
+.fallback-content p {
+    color: var(--teal);
+    text-shadow: 0 0 10px var(--teal-glow);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.fallback-hint {
+    margin-top: 2rem;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.pixlr-container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--teal), var(--gold), var(--crimson-red), var(--teal));
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0.5;
+    filter: blur(10px);
+    animation: borderGlow 3s ease infinite;
+}
+
+@keyframes borderGlow {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+#pixlr-editor {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Upload Section */
+.upload-section {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.upload-card {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.upload-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    color: var(--gold);
+    text-shadow: 0 0 15px var(--gold-glow);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.upload-description {
+    color: var(--teal);
+    text-shadow: 0 0 5px rgba(0, 206, 209, 0.5);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.upload-area {
+    border: 2px dashed var(--teal);
+    border-radius: 15px;
+    padding: 4rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(0, 206, 209, 0.05);
+    margin-bottom: 2rem;
+}
+
+.upload-area:hover,
+.upload-area.drag-over {
+    border-color: var(--gold);
+    background: rgba(255, 215, 0, 0.1);
+    box-shadow: 0 0 30px var(--gold-glow);
+}
+
+.upload-placeholder {
+    pointer-events: none;
+}
+
+.upload-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px var(--teal-glow));
+}
+
+.upload-area p {
+    color: var(--teal);
+    text-shadow: 0 0 5px rgba(0, 206, 209, 0.5);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.upload-hint {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+/* Progress Bar */
+#upload-progress {
+    margin: 2rem 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    border: 1px solid var(--glass-border);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal), var(--gold));
+    width: 0%;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 20px var(--teal-glow);
+}
+
+.progress-text {
+    text-align: center;
+    color: var(--teal);
+    text-shadow: 0 0 5px rgba(0, 206, 209, 0.5);
+    font-weight: 600;
+}
+
+/* Result Display */
+.result-success {
+    text-align: center;
+}
+
+.result-success h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    text-shadow: 0 0 15px var(--gold-glow);
+    margin-bottom: 2rem;
+}
+
+.result-info {
+    background: rgba(0, 206, 209, 0.1);
+    border: 1px solid var(--teal);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.result-item:last-child {
+    margin-bottom: 0;
+}
+
+.result-label {
+    font-weight: 600;
+    color: var(--teal);
+    text-shadow: 0 0 5px rgba(0, 206, 209, 0.5);
+    font-size: 1.1rem;
+}
+
+.result-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--gold);
+    text-shadow: 0 0 10px var(--gold-glow);
+    background: rgba(255, 215, 0, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--gold);
+}
+
+.result-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.result-error {
+    text-align: center;
+    padding: 2rem;
+}
+
+.result-error h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    color: var(--crimson-red);
+    text-shadow: 0 0 15px var(--crimson-red-glow);
+    margin-bottom: 1rem;
+}
+
+.result-error p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .instructions-panel {
+        grid-template-columns: 1fr;
+    }
+    
+    .pixlr-container {
+        height: 60vh;
+        min-height: 400px;
+    }
+    
+    .result-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 640px) {
+    .builder-section {
+        padding: 6rem 1rem 2rem;
+    }
+    
+    .upload-card {
+        padding: 2rem 1rem;
+    }
+    
+    .instruction-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}

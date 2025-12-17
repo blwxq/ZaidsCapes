@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Zaid's Capes</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="rgb-background"></div>
+    <div class="particles"></div>
+    
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <h1 class="logo-text">ZAID'S CAPES</h1>
+                    <p class="login-subtitle">Access Your Dashboard</p>
+                </div>
+                <form id="login-form" class="login-form">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="username" required autocomplete="username" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="password" required autocomplete="current-password" placeholder="Enter password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-login-submit">
+                        <span class="btn-glow"></span>
+                        <span class="btn-text">Sign In</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </form>
+                <div class="login-footer">
+                    <p><a href="index.html">← Back to Home</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard (Hidden until login) -->
+    <div id="dashboard" class="dashboard" style="display: none;">
+        <!-- Navigation -->
+        <nav class="dashboard-nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <span class="logo-text">ZAID'S CAPES</span>
+                    <span class="logo-subtitle">DASHBOARD</span>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="#tickets" class="nav-link active">Tickets</a>
+                    <a href="#stats" class="nav-link">Stats</a>
+                    <a href="cape-builder.html" class="nav-link">Cape Builder</a>
+                    <button id="logout-btn" class="btn btn-secondary btn-small">Logout</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Stats Cards -->
+            <section id="stats" class="stats-section">
+                <h2 class="section-title">
+                    <span class="gradient-text">REAL-TIME STATISTICS</span>
+                </h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🎫</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="pending-tickets">0</div>
+                            <div class="stat-label">Pending Tickets</div>
+                        </div>
+                        <div class="stat-trend up">+12%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="completed-tickets">0</div>
+                            <div class="stat-label">Completed Today</div>
+                        </div>
+                        <div class="stat-trend up">+5%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="online-users">0</div>
+                            <div class="stat-label">Online Users</div>
+                        </div>
+                        <div class="stat-trend up">+8%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="bot-uptime">99.9%</div>
+                            <div class="stat-label">Bot Uptime</div>
+                        </div>
+                        <div class="stat-trend stable">—</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎨</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="capes-generated">0</div>
+                            <div class="stat-label">Capes Generated</div>
+                        </div>
+                        <div class="stat-trend up">+24%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="revenue">$0</div>
+                            <div class="stat-label">Today's Revenue</div>
+                        </div>
+                        <div class="stat-trend up">+15%</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tickets Section -->
+            <section id="tickets" class="tickets-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="gradient-text">PENDING TICKETS</span>
+                    </h2>
+                    <div class="ticket-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="cape">Cape Requests</button>
+                        <button class="filter-btn" data-filter="support">Support</button>
+                        <button class="filter-btn" data-filter="urgent">Urgent</button>
+                    </div>
+                </div>
+                <div class="tickets-container">
+                    <div id="tickets-list" class="tickets-list">
+                        <!-- Tickets will be loaded here -->
+                        <div class="loading-tickets">
+                            <div class="loader"></div>
+                            <p>Loading tickets...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cape History Section -->
+            <section id="cape-history" class="tickets-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="gradient-text">CAPE HISTORY - ZAID+AUTOMATION</span>
+                    </h2>
+                </div>
+                <div class="tickets-container">
+                    <div id="cape-history-list" class="tickets-list">
+                        <div class="loading-tickets">
+                            <div class="loader"></div>
+                            <p>Loading cape history...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="dashboard_cape_history.js"></script>
+</body>
+</html>
+
